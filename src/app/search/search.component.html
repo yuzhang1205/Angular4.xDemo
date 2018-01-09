@@ -1,0 +1,26 @@
+<form [formGroup]="formModel" (submit)="onSearch()" novalidate >
+  <div class="form-group" [class.has-error]="formModel.hasError('minlength','Music')">
+    <label for="MusicName" >Music:</label>
+    <input type="text" id="MusicName" formControlName="Music"  placeholder="Music" class="form-control">
+    <span class="help-block" [class.hidden]="!formModel.hasError('minlength','Music')" >
+      至少输入两个字
+    </span>
+  </div>
+  <div class="form-group" [class.has-error]="formModel.hasError('minlength','Singer')">
+    <label for="Singer" >Singer:</label>
+    <input type="text" id="Singer" formControlName="Singer"  placeholder="Singer" class="form-control">
+    <span class="help-back" [class.hidden]="!formModel.hasError('minlength','Singer')" >
+      至少输入两个字
+    </span>
+  </div>
+  <div class="form-group">
+    <label for="categories">categories:</label>
+    <select  id="categories"  formControlName="Category"  class="form-control">
+      <option value="-1">All</option>
+      <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary btn-block">Search</button>
+  </div>
+</form>
